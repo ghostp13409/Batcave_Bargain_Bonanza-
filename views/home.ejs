@@ -1,0 +1,35 @@
+<%- include("layouts/head.ejs"); %>
+
+<body>
+    <%- include("layouts/banner.ejs"); %>
+
+    <%- include("layouts/nav.ejs"); %>
+
+    <main class="homeMain">
+        <div class="homeImageContainer">
+            <img 
+                src="images/BatmanBackground.jpg" 
+                alt="a photo of batman."
+                class="homeImage"
+            >
+        </div>
+        
+        <article class="homeArticle">
+            <h1 class="pageTitle" class="homeH1">Why the Sale?</h1>
+
+            Welcome to the Batcave Bargain Bonanza! After Robin’s latest “adventure” with my credit cards, I’ve found myself in a bit of a financial pickle.
+            Now, your friendly neighbourhood caped crusader has become the Dark Knight of Debt. Swing by for a chance to snag some bat-tastic deals 
+            on gadgets, gear, and maybe even a Batmobile or two! Don’t miss out—Batman needs your help to keep Gotham safe 
+            and his wallet intact!
+        </article>
+        <div>
+            <button class="saleButton"><a href="/saleForm">Go to Sale!</a></button>
+        </div>
+        
+    </main>
+
+    <%- include("layouts/footer.ejs"); %>
+
+</body>
+
+<%- include("layouts/docEnd.ejs"); %>

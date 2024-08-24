@@ -1,0 +1,46 @@
+<% let allordersPage = true %> <%- include("layouts/head.ejs"); %>
+
+<body>
+  <%- include("layouts/banner.ejs"); %> <%- include("layouts/nav.ejs"); %>
+
+  <main class="allordersPage">
+    <!-- Simple Order Layout  -->
+    <!-- Name || Location(City + Province) || Itemsbought || Total || See more -->
+    <!-- Detailed Order Infromation -->
+    <!-- Reciept Table -->
+    <h1>All Orders</h1>
+    <div class="allordersTableContainer">
+      <% if(typeof(orderList) == 'undefined'){ %>
+      <h1>There are no records in the database yet.</h1>
+      <% } %> <% if(typeof(orderList) != 'undefined'){ %>
+      <table class="AllOrdersTable">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Location</th>
+            <th>Items Purchased</th>
+            <th>Total</th>
+            <th>Details</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% orderList.forEach(order => { %>
+          <tr>
+            <td><%= order.name %></td>
+            <td><%= order.postalCode %></td>
+            <td><%= order.cart.length %></td>
+            <td>$<%= order.total %></td>
+            <!-- Add Detail Order Page Link -->
+            <td><a href="/orderdetails/<%= order._id %>">Order Details</a></td>
+          </tr>
+          <% }); %>
+        </tbody>
+      </table>
+      <% } %>
+    </div>
+  </main>
+
+  <%- include("layouts/footer.ejs"); %>
+</body>
+
+<%- include("layouts/docEnd.ejs"); %>

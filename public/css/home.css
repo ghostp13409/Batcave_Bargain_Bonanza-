@@ -1,0 +1,62 @@
+
+@font-face {
+    font-family: 'BatFonts';
+    src: url('../fonts/BruceForeverRegular-X3jd2.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+.homeImage{
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+}
+
+.homeMain{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: inset 0 0 10px rgba(0,0,0,0.5);
+}
+
+.homeMain div{
+    width: 35%;
+}
+
+.homeArticle{
+    background-color: rgba(14, 52, 90, 0.5);
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: inset 0 0 10px rgba(0,0,0,0.5);
+    width: 50%;
+    
+}
+
+.saleButton{
+    background-color: rgba(14, 52, 90, 0.5);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    padding: 10px;
+    margin: 10px;
+    box-shadow: inset 0 0 10px rgba(0,0,0,0.5);
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: inset 0 0 10px rgba(0,0,0,0.5);
+    width: 50%;
+    font-size: large;
+    font-family: 'BatFonts', sans-serif;
+    text-decoration: none;
+    text-align: center
+}
+
+.saleButton:hover{
+    background-color: rgb(14, 52, 90);
+    box-shadow: inset 0 0 10px rgba(0,0,0,0.8);
+    color: white;
+}

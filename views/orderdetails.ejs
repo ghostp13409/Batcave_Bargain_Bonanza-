@@ -1,0 +1,114 @@
+<%- include("layouts/head.ejs"); %>
+
+<body>
+  <%- include("layouts/banner.ejs"); %> <%- include("layouts/nav.ejs"); %>
+
+  <main class="orderPage">
+    <% if(typeof(errors) !='undefined' || typeof(total) !='undefined' ) { %>
+
+    <div class="reciept">
+      <fieldset>
+        <legend>Reciept</legend>
+
+        <!-- <h2 class="recieptHeader">Reciept</h2> -->
+        <div id="reciept" class="tableContainer" name="reciept">
+          <!-- Error Handling -->
+          <% if(typeof(errors) !='undefined' ){ %>
+          <div class="errorMessage">
+            <% for (var error of errors){ %>
+            <p class="errors"><%= error.msg %></p>
+            <% } %>
+          </div>
+
+          <% } %>
+
+          <!-- Make Tables -->
+          <% if(typeof(total) !='undefined' ){ %>
+
+          <!-- Information Table -->
+          <!-- Properties: name, email, phone, address, city, province, postalCode, deliveryTime, cart/orders{prodName: , quantity: , price: }, shippingCharge, subTotal, total, tax-->
+          <div class="InfoTable">
+            <table class="infoTable">
+              <tbody>
+                <tr>
+                  <td>Name</td>
+                  <td><%= name %></td>
+                </tr>
+                <tr>
+                  <td>Email</td>
+                  <td><%= email %></td>
+                </tr>
+                <tr>
+                  <td>Phone</td>
+                  <td><%= phone %></td>
+                </tr>
+                <tr>
+                  <td>Address</td>
+                  <td>
+                    <%= address %>, <%= city %>, <%= province %>, <%= postalCode
+                    %>
+                  </td>
+                </tr>
+                <tr>
+                  <td>Delivery Time</td>
+                  <td><%= deliveryTime %> Days</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <!-- Order Table -->
+          <div class="OrderTable">
+            <table class="orderTable">
+              <thead>
+                <tr>
+                  <th>Item</th>
+                  <th>Quantity</th>
+                  <th>Unit Price</th>
+                  <th>Total Price</th>
+                </tr>
+              </thead>
+
+              <tbody>
+                <% for (var product of cart){ %>
+                <tr>
+                  <td><%= product.name %></td>
+                  <td><%= product.quantity %></td>
+                  <td>$<%= product.price %></td>
+                  <td>$<%= product.quantity * product.price %></td>
+                </tr>
+                <% } %>
+
+                <tr>
+                  <td colspan="2">Shipping Charges</td>
+                  <td>At <%= province %> in <%= deliveryTime %> days</td>
+                  <td>$<%= shippingCharge %></td>
+                </tr>
+
+                <tr>
+                  <td colspan="3">Sub Total</td>
+                  <td>$<%= subTotal %></td>
+                </tr>
+                <tr>
+                  <td colspan="2">Tax</td>
+                  <td>@ <%= taxRate %></td>
+                  <td>$<%= tax %></td>
+                </tr>
+                <tr>
+                  <td colspan="3">Total</td>
+                  <td>$<%= total %></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <% } %>
+        </div>
+      </fieldset>
+    </div>
+    <% } %>
+  </main>
+
+  <%- include("layouts/footer.ejs"); %>
+</body>
+
+<%- include("layouts/docEnd.ejs"); %>

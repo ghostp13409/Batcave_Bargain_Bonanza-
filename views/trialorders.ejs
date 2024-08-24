@@ -1,0 +1,101 @@
+<%- include("layouts/head.ejs"); %>
+
+<body>
+  <%- include("layouts/banner.ejs"); %> <%- include("layouts/nav.ejs"); %>
+
+  <main class="homeMain">
+    <!-- Simple Order Layout  -->
+    <!-- Name || Location(City + Province) || Itemsbought || Total || See more -->
+    <!-- Detailed Order Infromation -->
+    <!-- Reciept Table -->
+
+    <div class="tableContainer">
+      <% if(typeof(orderList) == 'undefined'){ %>
+      <h1>There are no records in the database yet.</h1>
+      <% } %> <% if(typeof(orderList) != 'undefined'){ %>
+      <h1>All Orders</h1>
+      <table>
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Location</th>
+            <th>Items Purchased</th>
+            <th>Total</th>
+            <th>Details</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% orderList.forEach(order => { %>
+          <tr>
+            <td><%= order.name %></td>
+            <td><%= order.postalCode %></td>
+            <td><%= order.cart.length %></td>
+            <td><%= order.total %></td>
+            <!-- Add Detail Order Page Link -->
+            <!-- Add Order Idetifier in order link -->
+            <td>
+              <a href="/orderdetials/<% order.orderId %>">Order Details</a>
+            </td>
+            <td>
+              <!-- Order Reciept -->
+
+              <div class="OrderTable">
+                <table class="orderTable">
+                  <thead>
+                    <tr>
+                      <th>Item</th>
+                      <th>Quantity</th>
+                      <th>Unit Price</th>
+                      <th>Total Price</th>
+                    </tr>
+                  </thead>
+
+                  <tbody>
+                    <% let orderDetails = order.cart %> <% for (var orderDetail
+                    of orderDetails){ %>
+                    <tr>
+                      <td><%= orderDetail.name %></td>
+                      <td><%= orderDetail.quantity %></td>
+                      <td>$<%= orderDetail.price %></td>
+                      <td>$<%= orderDetail.quantity * orderDetail.price %></td>
+                    </tr>
+                    <% } %>
+
+                    <tr>
+                      <td colspan="2">Shipping Charges</td>
+                      <td>
+                        At <%= order.province %> in <%= order.deliveryTime %>
+                        days
+                      </td>
+                      <td>$<%= order.shippingCharge %></td>
+                    </tr>
+
+                    <tr>
+                      <td colspan="3">Sub Total</td>
+                      <td>$<%= order.subTotal %></td>
+                    </tr>
+                    <tr>
+                      <td colspan="2">Tax</td>
+                      <td>@ <%= order.taxRate %></td>
+                      <td>$<%= order.tax %></td>
+                    </tr>
+                    <tr>
+                      <td colspan="3">Total</td>
+                      <td>$<%= order.total %></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </td>
+          </tr>
+          <% }); %>
+        </tbody>
+      </table>
+      <% } %>
+    </div>
+  </main>
+
+  <%- include("layouts/footer.ejs"); %>
+</body>
+
+<%- include("layouts/docEnd.ejs"); %>

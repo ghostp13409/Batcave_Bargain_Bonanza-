@@ -1,0 +1,262 @@
+<%- include("layouts/head.ejs"); %>
+
+<body>
+  <%- include("layouts/banner.ejs"); %> <%- include("layouts/nav.ejs"); %>
+
+  <main
+  <% if(typeof(errors) != 'undefined' || typeof(total) != 'undefined') { %> 
+      style="display: grid; grid-template-columns: 1.5fr 0.5fr; gap: 1.5rem;" 
+  <% } %>
+  >
+    <!-- Products Section -->
+    <div class="products main-content">
+      <div class="PurchaseFormContainer">
+        <!-- Product Cards Get injected Here -->
+        <form method="post" class="PurchaseForm" id="purchaseForm">
+          <fieldset class="info" id="personalInfo">
+            <legend>Personal Information</legend>
+
+            <div>
+              <label for="nameN">Name*:</label>
+              <input
+                type="text"
+                id="nameId"
+                name="nameN"
+                class="CustomerInfoField"
+                value="Parth Gajjar"
+              />
+            </div>
+
+            <div>
+              <label for="emailN">Email*:</label>
+              <input
+                type="text"
+                id="emailId"
+                name="emailN"
+                class="CustomerInfoField"
+                value="parthgajjar@gmail.com"
+              />
+            </div>
+
+            <div>
+              <label for="phoneN">Phone*: </label>
+              <input
+                type="text"
+                id="phoneId"
+                name="phoneN"
+                class="CustomerInfoField"
+                placeholder="123-123-1234"
+                value="123-123-1234"
+              />
+            </div>
+            <div>
+              <label for="addressN">Address*: </label>
+              <input
+                type="text"
+                id="addressId"
+                name="addressN"
+                class="CustomerInfoField"
+                value="123 Main St"
+              />
+            </div>
+
+            <div>
+              <label for="cityN">City*: </label>
+              <input
+                type="text"
+                id="cityId"
+                name="cityN"
+                class="CustomerInfoField"
+                value="Waterloo"
+              />
+            </div>
+
+            <div>
+              <label for="postalCodeN">Postal Code*: </label>
+              <input
+                type="text"
+                id="postalCodeId"
+                name="postalCodeN"
+                class="CustomerInfoField"
+                placeholder="X9X 9X9"
+                value="X9X 9X9"
+              />
+            </div>
+
+            <div>
+              <label for="provinceN">Province*: </label>
+              <select
+                id="provinceId"
+                name="provinceN"
+                class="CustomerInfoField"
+              >
+                <option value="Ontario">Ontario</option>
+                <option value="Quebec">Quebec</option>
+                <option value="Alberta">Alberta</option>
+                <option value="British Columbia">British Columbia</option>
+                <option value="Manitoba">Manitoba</option>
+                <option value="New Brunswick">New Brunswick</option>
+                <option value="Newfoundland and Labrador">
+                  Newfoundland and Labrador
+                </option>
+                <option value="Nova Scotia">Nova Scotia</option>
+                <option value="Prince Edward Island">
+                  Prince Edward Island
+                </option>
+                <option value="Saskatchewan">Saskatchewan</option>
+              </select>
+            </div>
+
+            <div>
+              <label for="deliveryTimeN">Delivery Time*: </label>
+              <select
+                id="deliveryTimeId"
+                name="deliveryTimeN"
+                class="CustomerInfoField"
+              >
+                <option value="3">3 Days</option>
+                <option value="5">5 Days</option>
+                <option value="10">10 Days</option>
+              </select>
+              <p class="disclaimer">* Addiontional Delivery Charge will be applied to all deliveries outside gotham.</p>
+            </div>
+            <input type="submit" value="Checkout" />
+            <input type="reset" />
+          </fieldset>
+
+          <fieldset class="productGallery">
+            <legend>Products</legend>
+            <!-- Products get injected Here -->
+            <% for (var product of products){ %>
+            <div class="productCard" id="<%= product.productid %>Card">
+              <div>
+                <label for="<%= product.productid %>"
+                  ><%= product.name %> ($<%= product.price %>):</label
+                >
+                <article class="productInfo">
+                  <p><%= product.description %></p>
+                </article>
+                <input
+                  type="text"
+                  class="productInput"
+                  id="<%= product.productid %>In"
+                  name="<%= product.name %>"
+                  placeholder="Enter the Amount"
+                />
+              </div>
+            </div>
+            <% } %>
+          </fieldset>
+          
+        </form>
+      </div>
+    </div>
+
+    <!-- Reciept Section -->
+    <% if(typeof(errors) != 'undefined' || typeof(total) != 'undefined') { %>  
+
+    <div class="reciept main-content">
+      <fieldset>
+        <legend>Reciept</legend>
+      
+      <!-- <h2 class="recieptHeader">Reciept</h2> -->
+      <div id="reciept" class="tableContainer" name="reciept">
+        <!-- Error Handling -->
+        <% if(typeof(errors) != 'undefined'){ %>
+        <div class="errorMessage">
+          <% for (var error of errors){ %>
+          <p class="errors"><%= error.msg %></p>
+          <% } %>
+        </div>
+
+        <% } %>
+
+        <!-- Make Tables -->
+        <% if(typeof(total) != 'undefined'){ %>
+
+        <!-- Information Table -->
+        <div class="InfoTable">
+          <table class="infoTable">
+            <tbody>
+              <tr>
+                <td>Name</td>
+                <td><%= name %></td>
+              </tr>
+              <tr>
+                <td>Email</td>
+                <td><%= email %></td>
+              </tr>
+              <tr>
+                <td>Phone</td>
+                <td><%= phone %></td>
+              </tr>
+              <tr>
+                <td>Address</td>
+                <td>
+                  <%= address %>, <%= city %>, <%= province %>, <%= postalCode
+                  %>
+                </td>
+              </tr>
+              <tr>
+                <td>Delivery Time</td>
+                <td><%= deliveryTime %> Days</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Order Table -->
+        <div class="OrderTable">
+          <table class="orderTable">
+            <thead>
+              <tr>
+                <th>Item</th>
+                <th>Quantity</th>
+                <th>Unit Price</th>
+                <th>Total Price</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              <% for (var order of orders){ %>
+              <tr>
+                <td><%= order.name %></td>
+                <td><%= order.quantity %></td>
+                <td>$<%= order.price %></td>
+                <td>$<%= order.quantity * order.price %></td>
+              </tr>
+              <% } %>
+
+              <tr>
+                <td colspan="2">Shipping Charges</td>
+                <td>At <%= province %> in <%= deliveryTime %>days</td>
+                <td>$<%= shippingCharge %></td>
+              </tr>
+
+              <tr>
+                <td colspan="3">Sub Total</td>
+                <td>$<%= subTotal %></td>
+              </tr>
+              <tr>
+                <td colspan="2">Tax</td>
+                <td>@ <%= taxRate %></td>
+                <td>$<%= tax %></td>
+              </tr>
+              <tr>
+                <td colspan="3">Total</td>
+                <td>$<%= total %></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <% } %>
+      </div>
+    </fieldset>
+    </div>
+    <% } %> 
+  </main>
+
+  <%- include("layouts/footer.ejs"); %>
+</body>
+
+<%- include("layouts/docEnd.ejs"); %>

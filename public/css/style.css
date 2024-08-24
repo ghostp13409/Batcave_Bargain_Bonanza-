@@ -1,0 +1,330 @@
+/* Body Format */
+
+@font-face {
+    font-family: 'BatFonts';
+    src: url('../fonts/BruceForeverRegular-X3jd2.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+body{
+    display: grid;
+    grid-template-areas: 
+    "hd hd hd"
+    "nv nv nv"
+    "mn mn mn"
+    "ft ft ft";
+    font-family: 'BatFonts', "arial";
+    background-image: url("../images/gifbackground.webp");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+    color: #fff;
+    margin: 0px;
+    padding: 0px;
+    height: 100vh;
+    font-size: 1.2rem;
+    color: white;
+    text-align: center;
+}
+
+/* general Styling */
+
+a{
+    color: white;
+    text-decoration: none;
+    font-weight: bolder;
+}
+
+ul{
+    list-style: none;;
+    margin: 0px;
+    padding: 0px;
+}
+
+li{
+    margin: 0px;
+    padding: 0px;
+}
+
+main{
+    display: block;
+}
+
+/* header Layout */
+
+header{
+    display: flex;
+    align-items: center;
+}
+.headerImg{
+    width: 100px;
+    margin-left: 20px;
+    margin: 4px 20px;
+    border-radius: 10px;
+    /* box-shadow: 0 0 10px rgba(255, 255, 255, 0.5); */
+    border: 2px solid rgba(255, 255, 255, 0.5);
+    background-color: rgb(14, 52, 90, 0.5);
+}
+
+.headerImg:hover{
+    transform: scale(1.1);
+    transition: 0.2s;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+}
+
+.headerImg img{
+    width: 100%;
+}
+
+header h1{
+    text-align: center;
+    font-size: 36px;
+    font-weight: bold;
+    color: white;
+    margin-bottom: 20px;
+    text-align: center;
+    margin-top: 20px;
+    
+}
+
+.siteHeading{
+    flex-grow: 1;
+    text-align: center;
+}
+
+/* nav Layout */
+
+.nav-content{
+    display: flex;
+    justify-content: space-evenly;
+    border-radius: 10px;
+    background-color: rgb(14, 52, 90, 0.5);
+    box-shadow: 0 0 3px #000;
+    padding: 10px;
+    margin: 10px;
+    text-align: center;
+    box-shadow: 0 0 3px #000;
+}
+
+
+nav ul li a{
+    color: white;
+    text-decoration: none;
+    font-weight: bolder;
+    font-size: 1.2rem;
+}
+
+nav ul li a:hover{
+    color: white;
+    font-weight: bolder;
+    font-size: 1.2rem;
+    background-color: rgb(14, 52, 90);
+    border-radius: 5px;
+    padding: 5px;
+}
+
+nav ul li:hover{
+    transform: scale(2);
+    transition: 0.2s;
+}
+
+
+
+/* Main Layout */
+
+
+.main-content{
+    border: 2px solid black;
+    border-radius: 10px;
+    padding: 10px;
+    margin: 10px;
+    text-align: center;
+    box-shadow: 0 0 3px #000;
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+.main-content h1{
+    font-size: 2rem;
+    font-weight: bolder;
+}
+
+.main-content p{
+    font-size: 1.2rem;
+    font-weight: bolder;
+}
+
+.PurchaseForm{
+    display: flex;
+    gap: 10px;
+}
+
+/* Info Form Layout */
+
+fieldset {
+    padding: 20px;  
+    /* margin: 10px; */
+    border-radius: 10px;
+    text-align: center;
+    font-size: 1.2rem;
+    font-weight: bolder;
+    color: white;
+    margin-bottom: 20px;
+}
+
+.info label{
+    display: inline-block;
+    width: 250px;
+    text-align: left;
+    margin: 5px;
+}
+
+fieldset div{
+    margin: 10px;
+}
+
+input[type="text"], input[type="number"], select{
+    border-radius: 5px;
+    padding: 10px;
+    background-color: rgb(14, 52, 90, 0.5);
+    border: 1px solid black;
+    color: white;
+    font-size: 1.2rem;
+    font-weight: bolder;
+    margin: 5px;
+}
+
+.infoTable > input[type="text"], input[type="number"], select{
+    width: 300px;
+}
+
+input[type="text"]:hover, input[type="number"]:hover, select:hover{
+    background-color: rgb(14, 52, 90);
+    box-shadow: 0 0 10px rgba(0,0,0,0.5);
+}
+input[type="text"]:focus, input[type="number"]:focus, select:focus{
+    background-color: rgb(14, 52, 90);
+    box-shadow: 0 0 10px rgba(0,0,0,0.5);
+    box-shadow: 0 0 10px rgba(0,0,0,0.5);
+    transform: scale(1.05);
+}
+
+.CustomerInfoField{
+    width: 40%;
+}
+
+.productInput{
+    width: 90%;
+    margin: 5px;
+}
+
+option{
+    background-color: rgb(14, 52, 90, 0.5);
+    color: white;
+    font-size: 1.2rem;
+    font-weight: bolder;
+    
+}
+
+
+input[type="submit"], input[type="reset"]{
+    width: 50%;
+    border-radius: 5px;
+    padding: 10px;
+    background-color: rgb(14, 52, 90, 0.5);
+    border: 1px solid black;
+    color: white;
+    font-size: 1.2rem;
+    font-weight: bolder;
+    margin: 5px;
+}
+
+input[type="submit"]:hover, input[type="reset"]:hover{
+    background-color: #f2f2f2;
+    color: #000;
+    box-shadow: 0 0 10px rgba(0,0,0,0.5);
+}
+
+/* Product Layout */
+
+.productGallery{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(275px, 1fr));
+    gap: 0.7rem;
+}
+
+.productCard {
+    border: 2px solid black;
+    box-shadow: 0 0 7px #000;
+    border-radius: 10px;
+    padding: 10px;
+    /* margin: 5px; */
+    border: 1px solid black;
+    border-radius: 10px;
+    padding: 10px;
+    margin: 10px;
+    background-color: rgb(14, 52, 90, 0.5);
+    color: white;
+    font-size: 16px;
+    font-family: 'BatFonts', Arial, sans-serif;
+    text-align: center;
+}
+
+.productCard:hover{
+    box-shadow: 0 0 10px rgba(0,0,0,0.5);
+    transform: scale(1.05);
+}
+
+.productCard h3{
+    margin-top: 10px;
+}
+
+.productCard p{
+    margin-bottom: 10px;
+}
+
+.productInfo{
+    background-color: rgb(14, 52, 90);
+    padding: 10px;
+    border-radius: 10px;
+    margin: 10px 2px;
+    color: rgb(216, 210, 210);
+    font-family: 'BatFonts', Arial, sans-serif;
+    text-align: center;
+    height: 170px;
+    text-align: left;
+}
+
+
+
+.productInfo p{
+    font-size: small;
+    font-weight:lighter;
+}
+
+
+.disclaimer{
+    font-size: 1px;
+    font-weight: lighter;
+    color: grey;
+    text-align: center;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+/* Grid Layout */
+header{
+    grid-area: hd;
+}
+nav {
+    grid-area: nv;
+}
+main {
+    grid-area: mn;
+}
+footer{
+    grid-area: ft;
+    text-align: center;
+    font-size: small;
+}
